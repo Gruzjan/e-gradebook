@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:DzienniczekE.Models"
+             x:Class="DzienniczekE.Pages.StudentInfoPage">
+    <ContentPage.BindingContext>
+        <local:StudentInfoViewModel/>
+    </ContentPage.BindingContext>
+    <StackLayout>
+        <CollectionView ItemsSource="{Binding grades}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Orientation="Vertical">
+                        <StackLayout Padding="15" Orientation="Horizontal">
+                            <Label FontSize="20" Text="{Binding Value}" />
+                        </StackLayout>
+                        <BoxView Color="Gray" HeightRequest="2"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+        <Label x:Name="avgGrade"></Label>
+        <Button Text="Dodaj ocene" Clicked="OnNewGradeBtn_Click"/>
+    </StackLayout>
+</ContentPage>

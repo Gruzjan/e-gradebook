@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:DzienniczekE.Models"
+             x:Class="DzienniczekE.MainPage">
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel/>
+    </ContentPage.BindingContext>
+    <StackLayout>
+        <CollectionView x:Name="studentsCollection" SelectionMode="Single" SelectionChanged="OnStudentSelected" ItemsSource="{Binding Students}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Orientation="Vertical">
+                        <StackLayout Padding="15" Orientation="Horizontal">
+                            <Label FontSize="20" Text="{Binding StudentId}" />
+                            <Label FontSize="20" Text="{Binding FullName}" />
+                        </StackLayout>
+                        <BoxView Color="Gray" HeightRequest="2"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Text="Dodaj przykladowego" Clicked="OnAddBtn_Click" />
+        <Button Text="Nowy uczen" Clicked="OnNewBtn_Click"/>
+    </StackLayout>
+
+</ContentPage>
